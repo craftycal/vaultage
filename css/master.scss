@@ -1,0 +1,97 @@
+$yellow: #f9bb3d;
+
+html {
+  font-family: 'Heebo', sans-serif;
+  color: #333;
+  background-color: #222;
+  body {
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+.highscore{
+  margin: 40px;
+}
+table {
+  font-size: 18px;
+  color: #b3b3b3;
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+  th, tr {
+    padding: 10px;
+  }
+}
+
+.active {
+  text-decoration: line-through;
+}
+.yellow {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: $yellow;
+}
+.gray {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #c2c2c2;
+}
+
+#game_box {
+  width: 820px;
+  height: 360px;
+  margin: 25px auto;
+  border: 20px solid #222;
+  border-radius: 10px;
+}
+
+.title {
+  width: 0 auto;
+  h1 {
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 6px 1px #c2c2c2;
+  }
+}
+
+.container {
+  display: flex;
+}
+.box {
+  margin: auto;
+}
+
+.navigation_bar {
+  background-color: #f9bb3d;
+  .navigation {
+    width: 820px;
+    margin: 0 auto;
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f9bb3d;
+      li {
+        float: left;
+        a {
+          font-size: 24px;
+          display: block;
+          color: #222;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          border-top: 5px solid #f9bb3d;
+          border-bottom: 5px solid #f9bb3d;
+          &:hover {
+            border-top: 5px solid #222;
+            border-bottom: 5px solid #222;
+          }
+        }
+      }
+    }
+  }
+}
