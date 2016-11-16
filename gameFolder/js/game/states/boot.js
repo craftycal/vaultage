@@ -2,7 +2,7 @@ var vaultage = function () {};
 
 vaultage.boot= function() {};
 
-vaultage.boot.protboote = {
+vaultage.boot.prototype = {
   preload: function() {
     this.load.image('logo', 'game/assets/images/vaultage_logo.png');
   },
