@@ -20,7 +20,7 @@ vaultage.preload.prototype = {
     this.load.image('pole', 'gameFolder/assets/images/power_box.png');
     this.load.image('line', 'gameFolder/assets/images/power_line.png');
 
-    this.load.spritesheet('player', 'gameFolder/assets/images/player_runnng.png', 69, 67, 2);
+    this.load.spritesheet('player', 'gameFolder/assets/images/player_runnng.png', 65, 65, 2);
     this.load.spritesheet('death', 'gameFolder/assets/images/death.png', 69, 118, 2);
 
     this.load.audio('jump', 'gameFolder/assets/audio/jump.mp3', 'gameFolder/assets/audio/jump.ogg');
