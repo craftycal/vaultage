@@ -2,14 +2,14 @@ vaultage.preload= function() {
   this.ready = false;
 };
 
-vaultage.preload.protboote = {
+vaultage.preload.prototype = {
   preload: function() {
 
     // sprites
-    this.splash = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo');
+    this.splash = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 20, 'logo');
     this.splash.anchor.setTo(0.5);
 
-    this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 184, 'preloadBar');
+    this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 110, 'preloadBar');
     this.preloadBar.anchor.setTo(0.5);
 
     this.load.setPreloadSprite(this.preloadBar);
@@ -26,7 +26,8 @@ vaultage.preload.protboote = {
     this.load.audio('jump', 'gameFolder/assets/audio/jump.mp3', 'gameFolder/assets/audio/jump.ogg');
     this.load.audio('zap', 'gameFolder/assets/audio/zap.mp3', 'gameFolder/assets/audio/zap.ogg')
 
-    this.load.onComplete.add(this.onLoadComplete, this);
+    this.load.onLoadComplete.add(this.onLoadComplete, this);
+
   },
   create: function() {
     this.preloadBar.cropEnabled = false;

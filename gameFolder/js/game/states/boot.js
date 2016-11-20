@@ -11,7 +11,7 @@ vaultage.boot.prototype = {
   },
   create: function() {
     // background colour
-    this.game.stage.background = '#e6e6e6';
+    this.game.stage.backgroundColor = '#e6e6e6';
 
     // no multi-touch
     this.input.maxPointers = 1;
