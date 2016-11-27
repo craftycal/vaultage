@@ -13,15 +13,20 @@ vaultage.game.prototype = {
     this.background = this.game.add.tileSprite(0, 0, this.game.width, 360, 'background');
     this.background.autoScroll(-100, 0);
 
-    this.background = this.game.add.tileSprite(0, 290, this.game.width, 8, 'ground');
-    this.background.autoScroll(-180, 0);
+    this.ground = this.game.add.tileSprite(0, 290, this.game.width, 8, 'ground');
+    this.ground.autoScroll(-180, 0);
 
-    this.player = this.add.sprite(45, 245, 'player');
+    this.player = this.add.sprite(45, 200, 'player');
     this.player.animations.add('run');
     this.player.animations.play('run', 15, true);
 
     // gravity on player
-    this.game.physics.arcade.enableBody(this.player);
+    this.game.physics.arcade.enable([this.player, this.ground]);
+
+    this.ground.body.immovable = true;
+    this.ground.body.allowGravity = false;
+
+
     this.player.body.collideWorldBounds = true;
 
     // on ground
