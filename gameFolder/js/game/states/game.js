@@ -1,13 +1,12 @@
 vaultage.game = function() {};
 
 
-
 vaultage.game.prototype = {
   create : function() {
 
     // physics engine
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
-    this.game.physics.arcade.gravity.y = 500;
+    this.game.physics.arcade.gravity.y = 1000;
 
     // sprites
     this.background = this.game.add.tileSprite(0, 0, this.game.width, 360, 'background');
@@ -20,25 +19,15 @@ vaultage.game.prototype = {
     this.player.animations.add('run');
     this.player.animations.play('run', 15, true);
 
-    // gravity on player
+    // physics on sprites
     this.game.physics.arcade.enable([this.player, this.ground]);
-
     this.ground.body.immovable = true;
     this.ground.body.allowGravity = false;
-
-
     this.player.body.collideWorldBounds = true;
 
-    // on ground
-    // this.game.physics.arcade.enableBody(this.ground);
-    // this.ground.body.allowGravity = false;
-    // this.ground.body.immovable = true;
-
     // input
-    // cursors = game.input.keyboard.createCursorKeys();
-    // jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
-
+    cursors = game.input.keyboard.createCursorKeys();
+    jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 
   },
@@ -46,11 +35,11 @@ vaultage.game.prototype = {
 
     this.game.physics.arcade.collide(this.player, this.ground);
 
-    // if (jumpButton.isDown && this.player.body.onFloor() && game.time.now > jumpTimer)
-    // {
-    //     this.player.body.velocity.y = -250;
-    //     jumpTimer = game.time.now + 750;
-    // }
+    if (jumpButton.isDown && (this.player.body.touching.down))
+        {
+            this.player.body.velocity.y = -400;
+        }
+
 
   },
   shutdown : function() {
