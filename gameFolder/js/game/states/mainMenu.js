@@ -11,8 +11,8 @@ vaultage.mainMenu.prototype = {
     this.background.autoScroll(-180, 0);
 
     this.player = this.add.sprite(30, 230, 'player');
-    this.player.animations.add('run');
-    this.player.animations.play('run', 10, true);
+    this.player.animations.add('run', [0,1,2,3]);
+    this.player.animations.play('run', 15, true);
 
     this.splash = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 40, 'logo');
     this.splash.anchor.setTo(0.5);
