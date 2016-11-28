@@ -20,13 +20,8 @@ var obstacle = function(game, x, y, key, frame) {
 box.prototype = object.create(phaser.sprite.prototype);
 box.prototype.constructor = box;
 
-// when prite is created
+// when sprite is created
 box.prototype.onRevived = function () {
   // give the sprite some velocity
   this.body.velocity.x = -180;
 };
-
-// // when prite is killed
-// box.prototype.onKilled = function(){
-//   // not sure i need??
-// };
