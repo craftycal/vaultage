@@ -18,7 +18,7 @@ vaultage.preload.prototype = {
     this.load.image('ground', 'gameFolder/assets/images/ground.png');
     this.load.image('pole', 'gameFolder/assets/images/powe_pole.png');
     this.load.image('box', 'gameFolder/assets/images/power_box.png');
-    this.load.image('line', 'gameFolder/assets/images/power_line.png');
+    this.load.image('cable', 'gameFolder/assets/images/power_line.png');
 
     this.load.spritesheet('player', 'gameFolder/assets/images/player_sprite_run.png', 65, 65, 4);
     this.load.spritesheet('death', 'gameFolder/assets/images/death.png', 69, 118, 2);

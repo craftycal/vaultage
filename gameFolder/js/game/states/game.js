@@ -1,9 +1,8 @@
 vaultage.game = function() {};
 
   // generate a obstacle at a random time between 2 seconds and 6 seconds
-
-  this.obstacleRate = game.rnd.integerInRange(2000, 6000);
-  this.obstacleTimer = 0;
+  // this.obstacleRate = game.rnd.integerInRange(2000, 6000);
+  // this.obstacleTimer = 0;
 
 vaultage.game.prototype = {
   create : function() {
@@ -27,7 +26,9 @@ vaultage.game.prototype = {
     this.player.animations.play('run', 15, true);
 
     // obstacles
-    this.obstacle = this.game.add.group();
+    this.box = this.game.add.group();
+    //  this.pole = this.game.add.group();
+    //  this.cable = this.game.add.group();
 
     // physics on sprites
     this.game.physics.arcade.enable([this.player, this.ground]);
@@ -50,12 +51,12 @@ vaultage.game.prototype = {
             this.player.body.velocity.y = -400;
         }
 
-    // randomly pick a obstacles every 2-6 seconds and place in along the ground moving towards the player
-    if (this.obstacleTimer <  this.game.time.now) {
-      // reset timer after each creation
-      this.createObstacle();
-      this.obstacleTimer = this.game.time.now + this.obstacleRate;
-    }
+    // // randomly pick a obstacles every 2-6 seconds and place in along the ground moving towards the player
+    // if (this.obstacleTimer <  this.game.time.now) {
+    //   // reset timer after each creation
+    //   this.createObstacle();
+    //   this.obstacleTimer = this.game.time.now + this.obstacleRate;
+    // }
 
 
   },
@@ -63,25 +64,25 @@ vaultage.game.prototype = {
 
   }
 
-  createObstacle: function() {
-    // reset box position and re-create
-    var x = this.game.width;
-    var y = this.game.hight(290);
-
-    // get killed box and re-use
-    var obstacle = this.obstacle.getFirstExists(false);
-
-    // if no box exists create one
-    if (!obstacle) {
-      obstacle = new obstacle(this.game, 0, 0);
-      this.obstacle.add(obstacle);
-    }
-
-    // re-set box
-    obstacle.reset(x, y);
-    obstacle.revive();
-
-    }
-  }
+  // createObstacle: function() {
+  //   // reset box position and re-create
+  //   var x = this.game.width;
+  //   var y = this.game.hight(290);
+  //
+  //   // get killed box and re-use
+  //   var obstacle = this.obstacle.getFirstExists(false);
+  //
+  //   // if no box exists create one
+  //   if (!obstacle) {
+  //     obstacle = new obstacle(this.game, 0, 0);
+  //     this.obstacle.add(obstacle);
+  //   }
+  //
+  //   // re-set box
+  //   obstacle.reset(x, y);
+  //   obstacle.revive();
+  //
+  //   }
+  //}
 
 }
