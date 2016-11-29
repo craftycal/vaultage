@@ -90,6 +90,9 @@ table {
             border-top: 5px solid #222;
             border-bottom: 5px solid #222;
           }
+          &:focus {
+            text-decoration: line-through;
+          }
         }
       }
     }

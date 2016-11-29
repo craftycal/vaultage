@@ -78,5 +78,7 @@ table {
           .navigation_bar .navigation ul li a:hover {
             border-top: 5px solid #222;
             border-bottom: 5px solid #222; }
+          .navigation_bar .navigation ul li a:focus {
+            text-decoration: line-through; }
 
 /*# sourceMappingURL=master.css.map */
