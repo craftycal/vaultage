@@ -41,9 +41,9 @@ vaultage.game.prototype = {
 
     this.game.physics.arcade.collide(this.player, this.ground);
 
-    if (jumpButton.isDown && (this.player.body.touching.down)) {
+    if (jumpButton.isDown && (this.player.body.touching.down)); {
       this.player.body.velocity.y = -400;
-    }
+    };
 
     this.obstacles.forEachAlive(this.updateObstacle, this);
 
