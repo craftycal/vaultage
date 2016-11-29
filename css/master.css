@@ -78,5 +78,7 @@ table {
           .navigation_bar .navigation ul li a:hover {
             border-top: 5px solid #222;
             border-bottom: 5px solid #222; }
+          .navigation_bar .navigation ul li a:focus {
+            background-color: blue; }
 
 /*# sourceMappingURL=master.css.map */

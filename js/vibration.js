@@ -1,7 +1,3 @@
-
-
-  window.alert("sometext");
-
   // support for all navigator vibrate veriants
   navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
 
