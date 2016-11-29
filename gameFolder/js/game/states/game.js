@@ -9,6 +9,10 @@ vaultage.game.prototype = {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     this.game.physics.arcade.gravity.y = 1000;
 
+    // background
+    this.background = this.game.add.tileSprite(0, 0, this.game.width, 360, 'background');
+    this.background.autoScroll(-100, 0);
+
     // ground
     this.ground = this.game.add.tileSprite(0, 290, this.game.width, 8, 'ground');
     this.ground.autoScroll(-180, 0);
@@ -29,8 +33,10 @@ vaultage.game.prototype = {
     this.player.body.collideWorldBounds = true;
 
     // input
+    // stop space bar from moving the page
+    this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
     cursors = this.input.keyboard.createCursorKeys();
-    this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR) ||  this.game.input.onTap.add(onTap, this);;
 
     //
     this.createObstacles();
@@ -39,16 +45,16 @@ vaultage.game.prototype = {
   },
   update : function() {
 
-    this.game.physics.arcade.collide(this.player, this.ground);
+    this.game.physics.arcade.collide(this.player, [this.ground, this.obstacles]);
 
-    if (jumpButton.isDown && (this.player.body.touching.down)); {
-      this.player.body.velocity.y = -400;
+    if (this.jumpButton.isDown && (this.player.body.touching.down)) {
+      this.player.body.velocity.y = -500;
     };
 
     this.obstacles.forEachAlive(this.updateObstacle, this);
 
-
   },
+
   shutdown : function() {
   },
 
@@ -64,7 +70,7 @@ vaultage.game.prototype = {
 
     // timer on next obstacle spawn
     this.resetNextObstacle();
-    this.time.events.add(this.rnd.between(2000, 6000), this.nextObstacle, this);
+    this.time.events.add(this.rnd.between(1500, 4000), this.nextObstacle, this);
   },
 
   resetNextObstacle: function() {

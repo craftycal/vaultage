@@ -25,7 +25,7 @@ vaultage.preload.prototype = {
     this.load.spritesheet('death', 'gameFolder/assets/images/death.png', 69, 118, 2);
 
     this.load.audio('jump', 'gameFolder/assets/audio/jump.mp3', 'gameFolder/assets/audio/jump.ogg');
-    this.load.audio('zap', 'gameFolder/assets/audio/zap.mp3', 'gameFolder/assets/audio/zap.ogg')
+    this.load.audio('zap', 'gameFolder/assets/audio/zap.mp3', 'gameFolder/assets/audio/zap.ogg');
 
     this.load.onLoadComplete.add(this.onLoadComplete, this);
 
