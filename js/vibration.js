@@ -1,14 +1,7 @@
   // support for all navigator vibrate veriants
   navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
 
-
-
   // vibrate on tap
   $('.vib').click(function() {
-    navigator.vibrate(1000);
-  });
-
-  // vibrate on tap
-  $('#vib').click(function() {
-    navigator.vibrate(1000);
+    navigator.vibrate(200);
   });
