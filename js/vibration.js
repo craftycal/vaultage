@@ -11,3 +11,8 @@
   $('.vib').click(function() {
     navigator.vibrate(1000);
   });
+
+  // vibrate on tap
+  $('#vib').click(function() {
+    navigator.vibrate(1000);
+  });
