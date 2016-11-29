@@ -3,5 +3,5 @@
 
   // vibrate on tap
   $('.vib').click(function() {
-    navigator.vibrate(200);
+    navigator.vibrate(50);
   });
