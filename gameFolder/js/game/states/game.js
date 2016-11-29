@@ -18,7 +18,7 @@ vaultage.game.prototype = {
 
     // ground
     this.ground = this.game.add.tileSprite(0, 290, this.game.width, 8, 'ground');
-    this.ground.autoScroll(-180, 0);
+    this.ground.autoScroll(-200, 0);
 
     // player
     this.player = this.add.sprite(45, 200, 'player');
@@ -26,7 +26,9 @@ vaultage.game.prototype = {
     this.player.animations.play('run', 15, true);
 
     // obstacles
-    this.box = this.game.add.group();
+    this.obstacles = this.game.add.group();
+
+    //  this.box = this.game.add.group();
     //  this.pole = this.game.add.group();
     //  this.cable = this.game.add.group();
 
@@ -51,38 +53,18 @@ vaultage.game.prototype = {
             this.player.body.velocity.y = -400;
         }
 
-    // randomly pick a obstacles every 2-6 seconds and place in along the ground moving towards the player
-    if (this.obstacleTimer <  this.game.time.now) {
-      // reset timer after each creation
-      this.createObstacle();
-      this.obstacleTimer = this.game.time.now + this.obstacleRate;
-    }
 
 
   },
   shutdown : function() {
 
   }
+  //
+  // createObstacles : function() {
+  //
+  //
+  //
+  // }
 
-  createObstacle: function() {
-    // reset box position and re-create
-    var x = this.game.width;
-    var y = this.game.hight(290);
-
-    // get killed box and re-use
-    var obstacle = this.obstacle.getFirstExists(false);
-
-    // if no box exists create one
-    if (!obstacle) {
-      obstacle = new obstacle(this.game, 0, 0);
-      this.obstacle.add(obstacle);
-    }
-
-    // re-set box
-    obstacle.reset(x, y);
-    obstacle.revive();
-
-    }
-  }
 
 }
