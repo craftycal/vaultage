@@ -30,7 +30,7 @@ vaultage.game.prototype = {
 
     // input
     cursors = game.input.keyboard.createCursorKeys();
-    jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR) || this.game.input.activePointer.justPressed();
 
 
   },
