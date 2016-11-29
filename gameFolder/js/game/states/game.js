@@ -9,6 +9,15 @@ vaultage.game.prototype = {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     this.game.physics.arcade.gravity.y = 1000;
 
+    // ground
+    this.ground = this.game.add.tileSprite(0, 290, this.game.width, 8, 'ground');
+    this.ground.autoScroll(-180, 0);
+
+    // player
+    this.player = this.add.sprite(45, 200, 'player');
+    this.player.animations.add('run');
+    this.player.animations.play('run', 15, true);
+
     // obstacles
     this.obstacles = this.game.add.group();
     this.obstacles.enableBody = true;
@@ -77,6 +86,6 @@ vaultage.game.prototype = {
     if (obs.right < this.world.bounds.left) {
       obs.kill();
     }
-  },
+  }
 
 }
