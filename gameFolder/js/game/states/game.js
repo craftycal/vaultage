@@ -1,7 +1,5 @@
 vaultage.game = function() {};
 
-
-
 vaultage.game.prototype = {
   create : function() {
 
@@ -13,9 +11,16 @@ vaultage.game.prototype = {
     this.background = this.game.add.tileSprite(0, 0, this.game.width, 360, 'background');
     this.background.autoScroll(-100, 0);
 
+    // timer
+    // this.timer = game.time.create();
+    // this.timer.start();
+
+    // this.timer = game.time.create(false);
+    // this.timer.start();
+
     // ground
     this.ground = this.game.add.tileSprite(0, 290, this.game.width, 8, 'ground');
-    this.ground.autoScroll(-180, 0);
+    this.ground.autoScroll(-400, 0);
 
     // player
     this.player = this.add.sprite(45, 200, 'player');
@@ -36,13 +41,13 @@ vaultage.game.prototype = {
     // stop space bar from moving the page
     this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
     cursors = this.input.keyboard.createCursorKeys();
-    this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR) ||  this.game.input.onTap.add(onTap, this);;
+    this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-    //
+    // run create obsticals functions
     this.createObstacles();
     this.nextObstacle();
-
   },
+
   update : function() {
 
     this.game.physics.arcade.collide(this.player, [this.ground, this.obstacles]);
@@ -52,11 +57,16 @@ vaultage.game.prototype = {
     };
 
     this.obstacles.forEachAlive(this.updateObstacle, this);
-
   },
 
   shutdown : function() {
   },
+
+  // function render() {
+  //
+  //     game.debug.text('Time until event: ' + timer.duration.toFixed(0), 32, 32);
+  //
+  // }
 
   createObstacles: function() {
 
@@ -70,7 +80,7 @@ vaultage.game.prototype = {
 
     // timer on next obstacle spawn
     this.resetNextObstacle();
-    this.time.events.add(this.rnd.between(1500, 4000), this.nextObstacle, this);
+    this.time.events.add(this.rnd.between(1000, 2000), this.nextObstacle, this);
   },
 
   resetNextObstacle: function() {
@@ -80,7 +90,7 @@ vaultage.game.prototype = {
         obs.reset();
         obs.left = this.world.bounds.right;
         obs.bottom = this.ground.top;
-        obs.body.velocity.x = -180;
+        obs.body.velocity.x = -400;
     } else {
         console.warn("None available", this.obstacles.children);
     }
@@ -93,5 +103,4 @@ vaultage.game.prototype = {
       obs.kill();
     }
   }
-
 }
