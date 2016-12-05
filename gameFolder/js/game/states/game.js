@@ -93,5 +93,4 @@ vaultage.game.prototype = {
       obs.kill();
     }
   }
-
 }
