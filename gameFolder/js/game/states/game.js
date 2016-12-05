@@ -15,7 +15,7 @@ vaultage.game.prototype = {
 
     // ground
     this.ground = this.game.add.tileSprite(0, 290, this.game.width, 8, 'ground');
-    this.ground.autoScroll(-180, 0);
+    this.ground.autoScroll(-200, 0);
 
     // player
     this.player = this.add.sprite(45, 200, 'player');
@@ -70,7 +70,7 @@ vaultage.game.prototype = {
 
     // timer on next obstacle spawn
     this.resetNextObstacle();
-    this.time.events.add(this.rnd.between(1500, 4000), this.nextObstacle, this);
+    this.time.events.add(this.rnd.between(1500, 3000), this.nextObstacle, this);
   },
 
   resetNextObstacle: function() {
@@ -80,7 +80,7 @@ vaultage.game.prototype = {
         obs.reset();
         obs.left = this.world.bounds.right;
         obs.bottom = this.ground.top;
-        obs.body.velocity.x = -180;
+        obs.body.velocity.x = -200;
     } else {
         console.warn("None available", this.obstacles.children);
     }
