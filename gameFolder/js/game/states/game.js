@@ -22,6 +22,7 @@ vaultage.game.prototype = {
     this.ground = this.game.add.tileSprite(0, 290, this.game.width, 8, 'ground');
     this.ground.autoScroll(-400, 0);
 
+
     // player
     this.player = this.add.sprite(45, 200, 'player');
     this.player.animations.add('run');
@@ -30,6 +31,12 @@ vaultage.game.prototype = {
     // obstacles
     this.obstacles = this.game.add.group();
     this.obstacles.enableBody = true;
+
+
+    //  this.box = this.game.add.group();
+    //  this.pole = this.game.add.group();
+    //  this.cable = this.game.add.group();
+
 
     // physics on sprites
     this.game.physics.arcade.enable([this.player, this.ground]);
@@ -56,8 +63,10 @@ vaultage.game.prototype = {
       this.player.body.velocity.y = -500;
     };
 
+
     this.obstacles.forEachAlive(this.updateObstacle, this);
   },
+
 
   shutdown : function() {
   },
@@ -75,6 +84,7 @@ vaultage.game.prototype = {
     this.obstacles.setAll('body.allowGravity', false);
     this.obstacles.setAll('body.immovable', true);
   },
+
 
   nextObstacle: function() {
 
@@ -103,4 +113,15 @@ vaultage.game.prototype = {
       obs.kill();
     }
   }
+
+  }
+  //
+  // createObstacles : function() {
+  //
+  //
+  //
+  // }
+
+
+
 }
