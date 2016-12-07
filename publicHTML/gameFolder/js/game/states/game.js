@@ -72,7 +72,7 @@ vaultage.game.prototype = {
 
   createObstacles: function() {
 
-    // create  5 obstacles
+    // 1 x 5 keys == 5 obstacles
     this.obstacles.createMultiple(1, 'obstacle', [0, 1, 2, 3, 4]);
     this.obstacles.setAll('body.allowGravity', false);
     this.obstacles.setAll('body.immovable', true);
@@ -108,14 +108,12 @@ vaultage.game.prototype = {
     }
   },
 
-  playerHits: function(player, obstacles) {
+  playerDeath: function(player, obstacles) {
 
     player.kill();
     this.obstacles.stopScroll();
     this.ground.stopScroll();
     this.background.stopScroll();
-
-    var scoreboard = new scoreboard(this.game);
 
   }
 
