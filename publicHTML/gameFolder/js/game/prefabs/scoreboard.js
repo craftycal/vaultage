@@ -48,10 +48,10 @@ scoreboard.prototype.restart = function() {
 
   this.game.add.tween(this).to({y: 0}, 1000, phaser.Easing. Bounce.out, true);
 
-  this,game.input.onDown.addOnce(this.restart, this);
+  this.game.input.onDown.addOnce(this.restart, this);
 };
 
 scoreboard.prototype.restart = function() {
-  this.game..state.start('Game', true, false);
+  this.game.state.start('Game', true, false);
 
 };

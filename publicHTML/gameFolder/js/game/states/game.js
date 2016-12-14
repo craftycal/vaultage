@@ -1,7 +1,5 @@
 vaultage.game = function() {};
 
-// this.time = 0;
-
 vaultage.game.prototype = {
   create : function() {
 
@@ -55,7 +53,12 @@ vaultage.game.prototype = {
     this.score.text = diff;
 
     // look for collisions between sprites
-    this.game.physics.arcade.collide(this.player, [this.ground, this.obstacles]);
+    this.game.physics.arcade.collide(this.player, this.ground);
+
+    //  this.obstacles.body.onCollide = new scoreboard(this.game);
+    if (this.game.physics.arcade.collide(this.player, this.obstacles)) {
+      this.endGame();
+    };
 
     // jump
     if (this.jumpButton.isDown && (this.player.body.touching.down)) {
@@ -108,13 +111,11 @@ vaultage.game.prototype = {
     }
   },
 
-  playerDeath: function(player, obstacles) {
+  endGame: function() {
 
-    player.kill();
-    this.obstacles.stopScroll();
-    this.ground.stopScroll();
-    this.background.stopScroll();
-
+    this.scoreboard = scoreboard(this.game);
   }
+
+
 
 }
