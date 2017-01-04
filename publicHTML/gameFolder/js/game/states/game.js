@@ -1,13 +1,12 @@
 vaultage.game = function() {};
 
-// this.time = 0;
 
 vaultage.game.prototype = {
   create : function() {
 
     // physics engine
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
-    this.game.physics.arcade.gravity.y = 1000;
+    this.game.physics.arcade.gravity.y = 2000;
 
     // background
     this.background = this.game.add.tileSprite(0, 0, this.game.width, 360, 'background');
@@ -40,7 +39,7 @@ vaultage.game.prototype = {
     // stop space bar from moving the page
     this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
     cursors = this.input.keyboard.createCursorKeys();
-    this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR) ||  this.game.input.onTap.add(onTap, this);;
+    this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR) ||  this.game.input.onTap.add(onTap, this);
 
     // run the functions to create obstacles
     this.createObstacles();
@@ -55,11 +54,16 @@ vaultage.game.prototype = {
     this.score.text = diff;
 
     // look for collisions between sprites
-    this.game.physics.arcade.collide(this.player, [this.ground, this.obstacles]);
+    this.game.physics.arcade.collide(this.player, this.ground);
+
+    //  this.obstacles.body.onCollide = new scoreboard(this.game);
+    if (this.game.physics.arcade.collide(this.player, this.obstacles)) {
+      this.endGame();
+    };
 
     // jump
     if (this.jumpButton.isDown && (this.player.body.touching.down)) {
-      this.player.body.velocity.y = -500;
+      this.player.body.velocity.y = -600;
     };
 
     // run the updateObstacle function for each obstacle
@@ -73,7 +77,7 @@ vaultage.game.prototype = {
   createObstacles: function() {
 
     // 1 x 5 keys == 5 obstacles
-    this.obstacles.createMultiple(1, 'obstacle', [0, 1, 2, 3, 4]);
+    this.obstacles.createMultiple(1, 'obstacle', [0, 1, 2, 3]);
     this.obstacles.setAll('body.allowGravity', false);
     this.obstacles.setAll('body.immovable', true);
   },
@@ -86,6 +90,7 @@ vaultage.game.prototype = {
   },
 
   resetNextObstacle: function() {
+
     // reset each obstical to be re-used
     var obs = this.obstacles.getFirstDead();
 
@@ -108,13 +113,45 @@ vaultage.game.prototype = {
     }
   },
 
-  playerDeath: function(player, obstacles) {
+  endGame: function() {
 
-    player.kill();
-    this.obstacles.stopScroll();
-    this.ground.stopScroll();
-    this.background.stopScroll();
+    // stop everything
+    this.obstacles.setAll('body.velocity.x', 0);
+    this.ground.autoScroll(0, 0);
+    this.background.autoScroll(0, 0);
+    this.player.animations.stop(null, true);
 
+    // timer stop and add time to local storage    <<<<<<<<<
+    // stop new obstacles from being created ???   <<<<<<<<<
+
+    // game over text
+    this.game.add.text(this.game.world.centerX - 150, this.game.world.centerY - 100, "game over", { font: "60px Raleway"} );
+
+    // place the buttons
+    this.rePlay = game.add.sprite(this.game.world.centerX - 150, this.game.world.centerY + 100, 'rePlay');
+      this.rePlay.anchor.setTo(0.5, 0.5);
+    this.subScore = game.add.sprite(this.game.world.centerX + 150, this.game.world.centerY + 100, 'subScore');
+      this.subScore.anchor.setTo(0.5, 0.5);
+
+    // Enable input on the replay button
+    this.rePlay.inputEnabled = true;
+    // Attach a function to the input down ( click/tap)
+    this.rePlay.events.onInputDown.add(function() {
+      this.game.state.start('game');
+    }, this);
+
+
+    // Enable input on the subScore button
+    this.subScore.inputEnabled = true;
+    // Attach a function to the input down ( click/tap)
+    this.subScore.events.onInputDown.add(function() {
+
+      // show name inputfield and submit button
+      // on submit add name and score into database
+
+    }, this);
   }
+
+
 
 }
