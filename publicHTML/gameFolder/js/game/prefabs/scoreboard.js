@@ -2,6 +2,7 @@ var scoreboard = function(game) {
   Phaser.Group.call(this, game);
 }
 
+
 scoreboard.prototype = Object.create(Phaser.Group.prototype);
 scoreboard.prototype.constructor = scoreboard;
 

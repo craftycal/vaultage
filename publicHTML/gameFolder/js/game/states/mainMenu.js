@@ -9,7 +9,7 @@ vaultage.mainMenu.prototype = {
 
     // ground
     this.background = this.game.add.tileSprite(0, 290, this.game.width, 8, 'ground');
-    this.background.autoScroll(-180, 0);
+    this.background.autoScroll(-400, 0);
 
     // player
     this.player = this.add.sprite(30, 230, 'player');

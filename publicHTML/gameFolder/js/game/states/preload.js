@@ -20,6 +20,8 @@ vaultage.preload.prototype = {
     this.load.image('obstacle', 'gameFolder/assets/images/power_box.png');
   //  this.load.image('box', 'gameFolder/assets/images/power_box.png');
   //  this.load.image('cable', 'gameFolder/assets/images/power_line.png');
+    this.load.image('rePlay', 'gameFolder/assets/images/rePlay.png');
+    this.load.image('subScore', 'gameFolder/assets/images/sub_score.png');
 
     this.load.bitmapFont('courier', 'gameFolder/assets/fonts/courier/courier.png', 'gameFolder/assets/fonts/courier/courier.xml');
 
