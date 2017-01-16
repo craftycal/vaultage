@@ -146,6 +146,24 @@ vaultage.game.prototype = {
     // Attach a function to the input down ( click/tap)
     this.subScore.events.onInputDown.add(function() {
 
+      var name = "";
+      var score = "";
+      $.ajax (
+
+        {
+          url:"/vaultage/publicHTML/score.php",
+          data:{name:name, score:score},
+          type:"post",
+          success:function(result){
+            if (result === "success"){
+              alert ('yes');
+            } else {
+              alert ('no');
+            };
+          }
+        });
+
+
       // show name inputfield and submit button
       // on submit add name and score into database
 
